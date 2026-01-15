@@ -2,7 +2,7 @@
 
 import { Product } from '@/lib/types';
 import ProductCard from './ProductCard';
-import { Link } from '@/i18n/routing';
+import { Link } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
 
 interface DynamicCategorySectionsProps {

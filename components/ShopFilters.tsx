@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/routing';
+import { useRouter } from '@/i18n/navigation';
 import { useSearchParams } from 'next/navigation';
 import { Minus, Plus, SlidersHorizontal } from 'lucide-react';
 import { useState } from 'react';

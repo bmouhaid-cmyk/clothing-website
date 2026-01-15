@@ -4,7 +4,7 @@ import { useCart } from '@/context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { X, Minus, Plus, ShoppingBag, ArrowRight, Trash2 } from 'lucide-react';
-import { Link } from '@/i18n/routing';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 
 export default function CartDrawer() {

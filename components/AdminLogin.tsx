@@ -2,7 +2,7 @@
 
 import { login } from '@/app/actions/auth';
 import { useState } from 'react';
-import { useRouter } from '@/i18n/routing';
+import { useRouter } from '@/i18n/navigation';
 
 export default function AdminLogin() {
     const [error, setError] = useState('');

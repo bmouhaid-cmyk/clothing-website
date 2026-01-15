@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { redirect } from '@/i18n/routing';
+import { redirect } from '@/i18n/navigation';
 
 const ADMIN_PIN = '1234'; // Simple PIN for demo
 

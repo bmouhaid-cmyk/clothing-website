@@ -1,7 +1,7 @@
 'use client';
 
 import { Product } from '@/lib/types';
-import { Link } from '@/i18n/routing';
+import { Link } from '@/i18n/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { Heart } from 'lucide-react';
 import Image from 'next/image';
