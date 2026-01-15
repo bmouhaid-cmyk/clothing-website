@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Amiri, Cairo } from "next/font/google";
 import "../globals.css";
+import { promises as fs } from 'fs';
+import path from 'path';
 import { NextIntlClientProvider } from 'next-intl';
 // import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -75,11 +77,14 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Manual message loading to bypass next-intl plugin
+  // Manual message loading using fs (Node.js) for server stability
   let messages;
   try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
+    const filePath = path.join(process.cwd(), 'messages', `${locale}.json`);
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    messages = JSON.parse(fileContents);
   } catch (error) {
+    console.error(`Failed to load messages for locale: ${locale}`, error);
     notFound();
   }
 
