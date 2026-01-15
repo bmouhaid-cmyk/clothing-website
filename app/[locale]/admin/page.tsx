@@ -1,9 +1,7 @@
 import { checkAuth } from '@/app/actions/auth';
 import { getProducts } from '@/lib/db';
 import AdminLogin from '@/components/AdminLogin';
-import { checkAuth } from '@/app/actions/auth';
-import { getProducts } from '@/lib/db';
-import AdminLogin from '@/components/AdminLogin';
+
 import AdminDashboard from '@/components/AdminDashboard';
 
 export const dynamic = 'force-dynamic';
