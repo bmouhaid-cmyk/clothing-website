@@ -1,5 +1,5 @@
 import { getProducts } from '@/lib/db';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import ProductCard from '@/components/ProductCard';
 import ShopFilters from '@/components/ShopFilters';
 import Navbar from '@/components/Navbar';
@@ -13,7 +13,6 @@ export default async function ShopPage({
     searchParams: { category?: string; sort?: string };
     params: { locale: string };
 }) {
-    unstable_setRequestLocale(locale);
     const t = await getTranslations('HomePage');
     const allProducts = await getProducts();
     const { category, sort } = searchParams;

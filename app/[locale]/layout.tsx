@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Amiri, Cairo } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 // import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/routing';
@@ -69,9 +68,10 @@ import { getProducts } from '@/lib/db';
 
 // ... (other imports)
 
-export async function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'ar' }];
-}
+// ... (other imports)
+
+// Start of Dynamic Routing Strategy
+export const dynamic = 'force-dynamic';
 
 export default async function LocaleLayout({
   children,
@@ -80,8 +80,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-
-  unstable_setRequestLocale(locale);
 
   if (!locales.includes(locale as any)) {
     notFound();
