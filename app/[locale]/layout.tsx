@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Amiri, Cairo } from "next/font/google";
 import "../globals.css";
-import { promises as fs } from 'fs';
-import path from 'path';
 import { NextIntlClientProvider } from 'next-intl';
 // import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -10,6 +8,9 @@ import { locales } from '@/i18n/routing';
 import { CartProvider } from '@/context/CartContext';
 import CartDrawer from '@/components/CartDrawer';
 import Navbar from '@/components/Navbar';
+
+import messagesFr from '@/messages/fr.json';
+import messagesAr from '@/messages/ar.json';
 
 // Latin Fonts
 const playfair = Playfair_Display({
@@ -77,15 +78,12 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Manual message loading using fs (Node.js) for server stability
+  // Static message loading to guarantee Webpack bundling
   let messages;
-  try {
-    const filePath = path.join(process.cwd(), 'messages', `${locale}.json`);
-    const fileContents = await fs.readFile(filePath, 'utf8');
-    messages = JSON.parse(fileContents);
-  } catch (error) {
-    console.error(`Failed to load messages for locale: ${locale}`, error);
-    notFound();
+  if (locale === 'ar') {
+    messages = messagesAr;
+  } else {
+    messages = messagesFr;
   }
 
   const products = await getProducts();
