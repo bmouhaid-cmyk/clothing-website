@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { Leaf, Award, Heart } from 'lucide-react';
 
 export default async function AboutPage({
-    params,
+    params: { locale },
 }: {
-    params: Promise<{ locale: string }>;
+    params: { locale: string };
 }) {
     const { locale } = await params;
     setRequestLocale(locale);

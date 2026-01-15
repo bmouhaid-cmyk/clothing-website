@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { setRequestLocale } from 'next-intl/server';
 
 export default async function ContactPage({
-    params,
+    params: { locale },
 }: {
-    params: Promise<{ locale: string }>;
+    params: { locale: string };
 }) {
     const { locale } = await params;
     setRequestLocale(locale);
