@@ -65,12 +65,11 @@ import { getProducts } from '@/lib/db';
 
 export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }>) {
-  const { locale } = await params;
 
   if (!routing.locales.includes(locale as any)) {
     notFound();
