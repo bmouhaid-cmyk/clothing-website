@@ -3,15 +3,12 @@ import { Playfair_Display, Outfit, Amiri, Cairo } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
-// import { getMessages } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/routing';
 import { CartProvider } from '@/context/CartContext';
 import CartDrawer from '@/components/CartDrawer';
 import Navbar from '@/components/Navbar';
-
-import messagesFr from '@/messages/fr.json';
-import messagesAr from '@/messages/ar.json';
 
 // Latin Fonts
 const playfair = Playfair_Display({
@@ -65,14 +62,6 @@ export const metadata: Metadata = {
 
 import { getProducts } from '@/lib/db';
 
-// ... (other imports)
-
-// ... (other imports)
-
-// ... (other imports)
-
-// ... (other imports)
-
 // Start of Dynamic Routing Strategy
 export async function generateStaticParams() {
   return [{ locale: 'fr' }, { locale: 'ar' }];
@@ -92,13 +81,9 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Static message loading to guarantee Webpack bundling
-  let messages;
-  if (locale === 'ar') {
-    messages = messagesAr;
-  } else {
-    messages = messagesFr;
-  }
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
 
   const products = await getProducts();
   const uniqueCategories = Array.from(new Set(products.map(p => p.category[locale as 'fr' | 'ar']))).filter(Boolean);

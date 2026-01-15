@@ -1,23 +1,9 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
 
-export function middleware(request: NextRequest) {
-    const { pathname } = request.nextUrl;
-
-    // Check if the pathname already has a locale
-    const pathnameHasLocale = pathname.startsWith('/fr') || pathname.startsWith('/ar');
-
-    if (pathnameHasLocale) return NextResponse.next();
-
-    // Redirect to default locale (/fr) if no locale is present
-    const url = new URL(request.url);
-    url.pathname = `/fr${pathname}`;
-    return NextResponse.redirect(url);
-}
+export default createMiddleware(routing);
 
 export const config = {
-    matcher: [
-        // Skip all internal paths (_next)
-        "/((?!_next|api|favicon.ico).*)",
-    ],
+    // Match only internationalized pathnames
+    matcher: ['/', '/(fr|ar)/:path*']
 };
