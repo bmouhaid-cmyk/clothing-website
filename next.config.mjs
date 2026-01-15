@@ -17,7 +17,7 @@ const nextConfig = {
         ],
     },
     webpack: (config) => {
-        config.resolve.alias['next-intl/config'] = require('path').resolve(__dirname, './i18n/request.ts');
+        config.resolve.alias['next-intl/config'] = path.resolve(__dirname, './i18n/request.ts');
         return config;
     },
     async redirects() {
