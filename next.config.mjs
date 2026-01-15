@@ -26,6 +26,15 @@ const nextConfig = {
         config.resolve.alias['next-intl/config'] = path.resolve(__dirname, './i18n/request.ts');
         return config;
     },
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/fr',
+                permanent: true,
+            },
+        ];
+    },
 
 };
 
