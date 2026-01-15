@@ -16,10 +16,8 @@ export function middleware(request: NextRequest) {
 
     // Redirect if there is no locale
     const locale = defaultLocale;
-    request.nextUrl.pathname = `/${locale}${pathname}`;
-    // e.g. incoming request is /products
-    // The new URL is now /fr/products
-    return NextResponse.redirect(request.nextUrl);
+    const url = new URL(`/${locale}${pathname}`, request.url);
+    return NextResponse.redirect(url);
 }
 
 export const config = {
