@@ -1,12 +1,10 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware({
-    locales: ['fr', 'ar'],
-    defaultLocale: 'fr',
-    localePrefix: 'always'
-});
+export function middleware(request: NextRequest) {
+    return NextResponse.next();
+}
 
 export const config = {
-    // Match only internationalized pathnames
-    matcher: ['/', '/(fr|ar)/:path*']
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
