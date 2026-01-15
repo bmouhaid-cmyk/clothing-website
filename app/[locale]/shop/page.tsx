@@ -10,9 +10,11 @@ export default async function ShopPage({
     searchParams,
     params: { locale }
 }: {
-    searchParams: { category?: string; sort?: string };
-    params: { locale: string };
+    searchParams: Promise<{ category?: string; sort?: string }>;
+    params: Promise<{ locale: string }>;
 }) {
+    const { locale } = await params;
+    const { category, sort } = await searchParams;
     setRequestLocale(locale);
     const t = await getTranslations('HomePage');
     const allProducts = await getProducts();

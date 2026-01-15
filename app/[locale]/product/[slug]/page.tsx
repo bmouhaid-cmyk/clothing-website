@@ -9,7 +9,8 @@ import ProductDetails from './ProductDetails'; // Client component for interacti
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
-export default async function ProductPage({ params: { slug, locale } }: { params: { slug: string; locale: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+    const { slug, locale } = await params;
     setRequestLocale(locale);
     const product = await getProductBySlug(slug);
 

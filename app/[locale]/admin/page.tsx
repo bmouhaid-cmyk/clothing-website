@@ -6,7 +6,8 @@ import { setRequestLocale } from 'next-intl/server';
 
 
 
-export default async function AdminPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function AdminPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     setRequestLocale(locale);
     const isAuthenticated = await checkAuth();
     const products = await getProducts();
