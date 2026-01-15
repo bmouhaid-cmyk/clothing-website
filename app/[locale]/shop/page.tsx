@@ -8,7 +8,7 @@ import { ChevronDown } from 'lucide-react';
 
 export default async function ShopPage({
     searchParams,
-    params: { locale }
+    params
 }: {
     searchParams: Promise<{ category?: string; sort?: string }>;
     params: Promise<{ locale: string }>;
@@ -18,7 +18,6 @@ export default async function ShopPage({
     setRequestLocale(locale);
     const t = await getTranslations('HomePage');
     const allProducts = await getProducts();
-    const { category, sort } = searchParams;
 
     let filteredProducts = allProducts;
     if (category) {
