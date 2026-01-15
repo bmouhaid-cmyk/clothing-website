@@ -1,7 +1,7 @@
 import ContactForm from '@/components/ContactForm';
 import { Mail, MessageCircle, MapPin, Clock, Phone } from 'lucide-react';
 import Image from 'next/image';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 export default async function ContactPage({
     params,
@@ -9,7 +9,7 @@ export default async function ContactPage({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const content = {
         fr: {

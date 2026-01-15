@@ -1,4 +1,4 @@
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { Leaf, Award, Heart } from 'lucide-react';
 
@@ -8,7 +8,7 @@ export default async function AboutPage({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     // Fallback content if translation keys aren't ready
     const content = {

@@ -1,5 +1,4 @@
 import { defineRouting } from 'next-intl/routing';
-import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 
 export const routing = defineRouting({
     // A list of all locales that are supported
@@ -9,7 +8,6 @@ export const routing = defineRouting({
     defaultLocale: 'fr'
 });
 
-// Lightweight wrappers around Next.js' navigation APIs
-// that will consider the routing configuration
-export const { Link, redirect, usePathname, useRouter } =
-    createSharedPathnamesNavigation(routing);
+// Explicitly export these to fix "Export not found" errors in layout.tsx
+export const locales = routing.locales;
+export const defaultLocale = routing.defaultLocale;

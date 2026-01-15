@@ -4,13 +4,13 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar'; // Reuse standard navbar
 import Footer from '@/components/Footer';
 import { Product } from '@/lib/types';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ProductDetails from './ProductDetails'; // Client component for interactivity
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default async function ProductPage({ params: { slug, locale } }: { params: { slug: string; locale: string } }) {
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
     const product = await getProductBySlug(slug);
 
     if (!product) {
