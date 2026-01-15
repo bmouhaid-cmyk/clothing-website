@@ -20,7 +20,7 @@ export async function login(formData: FormData) {
 export async function logout() {
     const cookieStore = await cookies();
     cookieStore.delete('admin_session');
-    redirect({ href: '/admin', locale: 'fr' });
+    redirect('/admin');
 }
 
 export async function checkAuth() {
