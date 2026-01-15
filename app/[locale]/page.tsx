@@ -11,7 +11,10 @@ import TrustSection from '@/components/TrustSection';
 import DynamicCategorySections from '@/components/DynamicCategorySections';
 import { getProducts } from '@/lib/db';
 
-export default async function HomePage() {
+import { unstable_setRequestLocale } from 'next-intl/server';
+
+export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
   const products = await getProducts(); // Fetch once, pass to children
 
   return (

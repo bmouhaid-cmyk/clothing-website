@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Amiri, Cairo } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 // import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/routing';
@@ -79,6 +80,8 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+
+  unstable_setRequestLocale(locale);
 
   if (!locales.includes(locale as any)) {
     notFound();
