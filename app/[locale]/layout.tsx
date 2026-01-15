@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Outfit, Amiri, Cairo } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+// import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/routing';
 import { CartProvider } from '@/context/CartContext';
@@ -75,7 +75,14 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  // Manual message loading to bypass next-intl plugin
+  let messages;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
   const products = await getProducts();
   const uniqueCategories = Array.from(new Set(products.map(p => p.category[locale as 'fr' | 'ar']))).filter(Boolean);
 
