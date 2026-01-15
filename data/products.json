@@ -1,0 +1,142 @@
+[
+    {
+        "id": "1",
+        "name": {
+            "fr": "Robe Florale d'Été",
+            "ar": "فستان صيفي مزهّر"
+        },
+        "price": 450,
+        "description": {
+            "fr": "Une robe légère et élégante, parfaite pour les journées ensoleillées. Tissu respirant et confort absolu.",
+            "ar": "فستان خفيف وأنيق، مثالي للأيام المشمسة. قماش مسامي وراحة مطلقة."
+        },
+        "category": {
+            "fr": "Robes",
+            "ar": "فساتين"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "slug": "robe-florale-ete",
+        "isNew": true,
+        "tags": {
+            "fr": [
+                "new",
+                "summer"
+            ],
+            "ar": [
+                "جديد",
+                "صيف"
+            ]
+        },
+        "collection": {
+            "fr": "Summer Breeze",
+            "ar": "نسيم الصيف"
+        }
+    },
+    {
+        "id": "2",
+        "name": {
+            "fr": "Abaya Royale Noire",
+            "ar": "عباية ملكية سوداء"
+        },
+        "price": 890,
+        "description": {
+            "fr": "Abaya luxueuse avec broderies dorées, idéale pour les grandes occasions.",
+            "ar": "عباية فاخرة بتطريز ذهبي، مثالية للمناسبات الكبيرة."
+        },
+        "category": {
+            "fr": "Abayas",
+            "ar": "عبايات"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1596704017254-9b121068fb29?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "slug": "abaya-royale-noire",
+        "isNew": false,
+        "tags": {
+            "fr": [
+                "bestseller",
+                "premium"
+            ],
+            "ar": [
+                "الأكثر مبيعا",
+                "فاخر"
+            ]
+        },
+        "collection": {
+            "fr": "Evening Elegance",
+            "ar": "سهرة راقية"
+        }
+    },
+    {
+        "id": "3",
+        "name": {
+            "fr": "Ensemble Soie Moderne",
+            "ar": "طقم حرير عصري"
+        },
+        "price": 1200,
+        "description": {
+            "fr": "Ensemble deux pièces en soie fluide, alliant modestie et modernité.",
+            "ar": "طقم قطعتين من الحرير الانسيابي، يجمع بين الحشمة والعصرية."
+        },
+        "category": {
+            "fr": "Ensembles",
+            "ar": "أطقم"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "slug": "ensemble-soie-moderne",
+        "isNew": true,
+        "tags": {
+            "fr": [
+                "new",
+                "promotion"
+            ],
+            "ar": [
+                "جديد",
+                "تخفيض"
+            ]
+        },
+        "collection": {
+            "fr": "Urban Silk",
+            "ar": "حرير حضري"
+        }
+    },
+    {
+        "id": "4",
+        "name": {
+            "fr": "Kaftan Marocain Bleu",
+            "ar": "قفطان مغربي أزرق"
+        },
+        "price": 2500,
+        "description": {
+            "fr": "Kaftan traditionnel revisité avec une coupe moderne et des finitions à la main.",
+            "ar": "قفطان تقليدي بلمسة عصرية وتشطيبات يدوية."
+        },
+        "category": {
+            "fr": "Robes",
+            "ar": "فساتين"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1583292630854-9545d947190f?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "slug": "kaftan-marocain-bleu",
+        "isNew": false,
+        "tags": {
+            "fr": [
+                "wedding",
+                "luxury"
+            ],
+            "ar": [
+                "زفاف",
+                "فخامة"
+            ]
+        },
+        "collection": {
+            "fr": "Evening Elegance",
+            "ar": "سهرة راقية"
+        }
+    }
+]

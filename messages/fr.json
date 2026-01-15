@@ -1,0 +1,110 @@
+{
+    "HomePage": {
+        "title": "Une Élégance Intemporelle",
+        "subtitle": "Découvrez notre nouvelle collection de luxe.",
+        "cta": "Voir la Collection",
+        "trending": {
+            "title": "Collections",
+            "subtitle": "Explorez nos dernières tendances",
+            "explore": "Découvrir",
+            "collections": {
+                "summer_breeze": "Summer Breeze",
+                "evening_elegance": "Evening Elegance",
+                "modest_chic": "Modest Chic",
+                "urban_silk": "Urban Silk"
+            }
+        },
+        "spotlight": {
+            "limited_offer": "Offre Limitée",
+            "title": "Midnight Collection",
+            "description": "L'élégance intemporelle pour vos soirées les plus précieuses.",
+            "cta": "Découvrir"
+        },
+        "product_grid": {
+            "title": "La Collection",
+            "tabs": {
+                "all": "Tous",
+                "new": "Nouveautés",
+                "best_sellers": "Best Sellers",
+                "promotions": "Promotions"
+            },
+            "view_all": "Voir tout les produits"
+        }
+    },
+    "Product": {
+        "addToCart": "Commander via WhatsApp",
+        "price": "{price} DH",
+        "new": "Nouveau"
+    },
+    "ProductDetails": {
+        "ref": "Réf",
+        "size_label": "Taille",
+        "size_guide": "Guide des tailles",
+        "add_to_cart": "Ajouter au panier",
+        "share": "Partager ce produit",
+        "delivery_info": "Livraison standard gratuite dès 500 MAD",
+        "returns_info": "Retours gratuits sous 30 jours",
+        "select_size_error": "Veuillez sélectionner une taille."
+    },
+    "Categories": {
+        "title": "Nos Univers",
+        "label": "Collections",
+        "explore_all": "Tout Explorer",
+        "discover": "Découvrir la collection",
+        "robes": "Robes de Soirée",
+        "ensembles": "Ensembles Chics",
+        "abayas": "Abayas Modernes",
+        "accessoires": "Accessoires"
+    },
+    "Trust": {
+        "delivery": {
+            "title": "Livraison Express",
+            "desc": "Partout au Maroc offert dès 500DH"
+        },
+        "returns": {
+            "title": "Retours Gratuits",
+            "desc": "Sous 30 jours pour changer d'avis"
+        },
+        "payment": {
+            "title": "Paiement Sécurisé",
+            "desc": "À la livraison ou par carte bancaire"
+        },
+        "support": {
+            "title": "Service Client",
+            "desc": "Une équipe à votre écoute 7j/7"
+        }
+    },
+    "Newsletter": {
+        "title": "LA NEWSLETTER",
+        "desc": "Abonnez-vous pour être informée de nos offres exclusives et de nos dernières nouveautés.",
+        "placeholder": "Votre adresse e-mail",
+        "button": "OK",
+        "disclaimer": "En vous inscrivant, vous acceptez notre politique de confidentialité."
+    },
+    "Footer": {
+        "about": "L'excellence de la mode marocaine, alliant tradition et modernité pour la femme contemporaine.",
+        "collections": "Collections",
+        "new": "Nouveautés",
+        "robes": "Robes",
+        "sets": "Ensembles",
+        "sale": "Soldes",
+        "help": "Aide",
+        "contact": "Contact",
+        "shipping": "Livraison",
+        "returns": "Retours",
+        "faq": "FAQ",
+        "follow": "Suivez-nous",
+        "copyright": "© 2026 MABOX LUXURY. Tous droits réservés."
+    },
+    "Nav": {
+        "home": "Accueil",
+        "shop": "Boutique",
+        "about": "À Propos",
+        "contact": "Contact"
+    },
+    "Admin": {
+        "title": "Tableau de Bord",
+        "login": "Connexion",
+        "logout": "Se déconnecter"
+    }
+}
