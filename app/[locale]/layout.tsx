@@ -66,6 +66,12 @@ import { getProducts } from '@/lib/db';
 
 // ... (other imports)
 
+// ... (other imports)
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'ar' }];
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale },
