@@ -1,3 +1,11 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+/** 
+ * Use the plugin ONLY for Server Components translation loading.
+ * The Middleware handles routing.
+ */
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -16,14 +24,7 @@ const nextConfig = {
             },
         ],
     },
-    async redirects() {
-        return [
-            {
-                source: '/',
-                destination: '/fr',
-                permanent: true,
-            },
-        ];
-    },
+    output: 'standalone',
 };
-export default nextConfig;
+
+export default withNextIntl(nextConfig);
