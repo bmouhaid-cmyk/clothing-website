@@ -16,7 +16,7 @@ export default async function ShopPage({
     setRequestLocale(locale);
     const t = await getTranslations('HomePage');
     const allProducts = await getProducts();
-    const allProducts = await getProducts();
+    const { category, sort } = searchParams;
 
     let filteredProducts = allProducts;
     if (category) {
