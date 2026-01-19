@@ -7,7 +7,6 @@ export default async function AboutPage({
 }: {
     params: { locale: string };
 }) {
-    const { locale } = await params;
     setRequestLocale(locale);
 
     // Fallback content if translation keys aren't ready

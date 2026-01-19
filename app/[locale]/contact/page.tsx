@@ -8,7 +8,6 @@ export default async function ContactPage({
 }: {
     params: { locale: string };
 }) {
-    const { locale } = await params;
     setRequestLocale(locale);
 
     const content = {
