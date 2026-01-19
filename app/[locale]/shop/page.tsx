@@ -10,23 +10,35 @@ export default async function ShopPage({
     searchParams,
     params: { locale }
 }: {
-    searchParams: { category?: string; sort?: string };
+    searchParams: { category?: string; sort?: string; tag?: string };
     params: { locale: string };
 }) {
     setRequestLocale(locale);
     const t = await getTranslations('HomePage');
     const allProducts = await getProducts();
-    const { category, sort } = searchParams;
+    const { category, sort, tag } = searchParams;
 
     let filteredProducts = allProducts;
+
+    // Filter by Category
     if (category) {
         filteredProducts = filteredProducts.filter(
             (p) => p.category[locale as 'fr' | 'ar']?.toLowerCase() === category.toLowerCase()
         );
     }
 
+    // Filter by Tag
+    if (tag) {
+        filteredProducts = filteredProducts.filter(
+            (p) => p.tags?.[locale as 'fr' | 'ar']?.includes(tag)
+        );
+    }
+
     // Extract unique categories from products based on current locale
     const uniqueCategories = Array.from(new Set(allProducts.map(p => p.category[locale as 'fr' | 'ar']))).filter(Boolean);
+
+    // Extract unique tags from products based on current locale
+    const uniqueTags = Array.from(new Set(allProducts.flatMap(p => p.tags?.[locale as 'fr' | 'ar'] || []))).filter(Boolean);
 
     return (
         <main className="min-h-screen bg-background">
@@ -39,7 +51,7 @@ export default async function ShopPage({
                 <div className="container mx-auto px-6 text-center space-y-4 relative z-10">
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Boutique Officielle</span>
                     <h1 className="text-5xl md:text-7xl font-serif text-foreground">
-                        {category ? category : 'COLLECTION'}
+                        {category ? category : (tag ? `#${tag}` : 'COLLECTION')}
                     </h1>
                     <div className="w-24 h-1 bg-primary/20 mx-auto mt-4 rounded-full" />
                 </div>
@@ -49,7 +61,7 @@ export default async function ShopPage({
                 <div className="flex flex-col lg:flex-row gap-16">
                     {/* Sidebar - Fixed Width */}
                     <aside className="w-full lg:w-64 flex-shrink-0">
-                        <ShopFilters availableCategories={uniqueCategories} />
+                        <ShopFilters availableCategories={uniqueCategories} availableTags={uniqueTags} />
                     </aside>
 
                     {/* Main Content */}

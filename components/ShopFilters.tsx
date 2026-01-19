@@ -8,13 +8,15 @@ import { useState } from 'react';
 
 interface ShopFiltersProps {
     availableCategories: string[];
+    availableTags: string[];
 }
 
-export default function ShopFilters({ availableCategories }: ShopFiltersProps) {
+export default function ShopFilters({ availableCategories, availableTags }: ShopFiltersProps) {
     const t = useTranslations('Categories');
     const router = useRouter();
     const searchParams = useSearchParams();
     const activeCategory = searchParams.get('category');
+    const activeTag = searchParams.get('tag'); // Get active tag
     const [isPriceOpen, setIsPriceOpen] = useState(true);
 
     // Map known system categories to their translation keys
@@ -44,10 +46,23 @@ export default function ShopFilters({ availableCategories }: ShopFiltersProps) {
 
     const handleCategoryChange = (catId: string) => {
         const params = new URLSearchParams(searchParams.toString());
+        // Reset tag when changing category? Maybe not, allow combination.
+        // Let's keep tag if we change category.
+
         if (catId === 'all') {
             params.delete('category');
         } else {
             params.set('category', catId);
+        }
+        router.push(`/shop?${params.toString()}`);
+    };
+
+    const handleTagChange = (tag: string) => {
+        const params = new URLSearchParams(searchParams.toString());
+        if (activeTag === tag) {
+            params.delete('tag'); // Toggle off
+        } else {
+            params.set('tag', tag);
         }
         router.push(`/shop?${params.toString()}`);
     };
@@ -81,6 +96,27 @@ export default function ShopFilters({ availableCategories }: ShopFiltersProps) {
                     ))}
                 </ul>
             </div>
+
+            {/* Tags Section */}
+            {availableTags.length > 0 && (
+                <div>
+                    <h3 className="font-serif text-lg mb-4 text-foreground">Étiquettes</h3>
+                    <div className="flex flex-wrap gap-2">
+                        {availableTags.map(tag => (
+                            <button
+                                key={tag}
+                                onClick={() => handleTagChange(tag)}
+                                className={`text-[10px] px-3 py-1.5 rounded-full border transition-all uppercase tracking-wider ${activeTag === tag
+                                        ? 'bg-foreground text-white border-foreground'
+                                        : 'bg-white text-muted hover:border-foreground border-transparent'
+                                    }`}
+                            >
+                                {tag}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             {/* Price - Collapsible */}
             <div className="pt-6 border-t border-foreground/5">
