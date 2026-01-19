@@ -1,38 +1,37 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Lightweight, zero-dependency configuration
+// Zero external imports to prevent "Poisoned Imports" in Edge Runtime
 const locales = ['fr', 'ar'];
 const defaultLocale = 'fr';
 
 export function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
-    // Check if the pathname is missing a locale
-    const pathnameIsMissingLocale = locales.every(
-        (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    // Check if the pathname already starts with a locale
+    // e.g. /fr/about or /ar
+    const pathnameHasLocale = locales.some(
+        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
 
-    // Redirect if no locale is present
-    if (pathnameIsMissingLocale) {
-        const locale = defaultLocale;
-
-        // Construct new URL with locale
-        // e.g. /about -> /fr/about
-        return NextResponse.redirect(
-            new URL(`/${locale}${pathname}`, request.url)
-        );
+    if (pathnameHasLocale) {
+        return NextResponse.next();
     }
 
-    // Allow the request to proceed if valid
-    return NextResponse.next();
+    // Redirect if no locale is present
+    const locale = defaultLocale;
+    const newUrl = new URL(`/${locale}${pathname}`, request.url);
+
+    // Preserve query parameters
+    newUrl.search = request.nextUrl.search;
+
+    return NextResponse.redirect(newUrl);
 }
 
 export const config = {
-    // Match all pathnames except for:
-    // - /api routes
-    // - /_next (internal)
-    // - /_vercel (internal)
-    // - files with extensions (e.g. .css, .js, .ico, .png)
-    matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+    // Strict Matcher to exclude all static assets and internal paths
+    // Prevents "Broad Matcher" crashes
+    matcher: [
+        '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|gif|png|svg|ico|webp|js|css|woff|woff2|ttf|eot)).*)'
+    ]
 };
